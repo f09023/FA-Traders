@@ -164,11 +164,6 @@
             transition: 0.3s;
         }
 
-        .price-box.active {
-            border-color: #10b981;
-            background-color: rgba(16, 185, 129, 0.03);
-        }
-
         .box-title {
             font-size: 16px;
             font-weight: 600;
@@ -271,14 +266,14 @@
         <p class="card-desc">Select a package below and transfer the amount to get instant access.</p>
         
         <!-- OPTION 1: 2,000 PKR BOX -->
-        <div class="price-box active">
+        <div class="price-box" style="border-color: #10b981; background-color: rgba(16, 185, 129, 0.03);">
             <div class="box-title">📚 Trading Strategy E-Book Only</div>
             <div class="price-tag">Price: 2,000 PKR</div>
             <div class="number-box">Easypaisa / Jazzcash: 0337 3353701</div>
         </div>
 
-        <!-- OPTION 2: 3,000 PKR BOX (NEW VIDEO BOX) -->
-        <div class="price-box active" style="border-color: #3182ce; background-color: rgba(49, 130, 206, 0.03);">
+        <!-- OPTION 2: 3,000 PKR BOX -->
+        <div class="price-box" style="border-color: #3182ce; background-color: rgba(49, 130, 206, 0.03);">
             <div class="box-title" style="color: #3182ce;">🎥 E-Book + Video Course Package</div>
             <div class="price-tag" style="color: #3182ce;">Price: 3,000 PKR</div>
             
@@ -314,6 +309,7 @@
 
         function openWhatsApp() {
             var whatsappNumber = "923373353701"; 
+            // YAHA SLASH (/) FIX KAR DIYA HAI
             var message = "Hello! Maine payment transfer kar di hai, kindly mujhe mera trading course aur e-book send kar dein.";
             
             var url = "https://wa.me" + whatsappNumber + "?text=" + encodeURIComponent(message);
