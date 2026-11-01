@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FA Traders - Global Financial Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0e1117;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Lamp Graphic & Glow Effect */
+        .lamp-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .lamp-line {
+            width: 3px;
+            height: 60px;
+            background: #555;
+        }
+
+        .lamp-head {
+            width: 70px;
+            height: 45px;
+            background: #f1c40f;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0px 10px 40px rgba(241, 196, 15, 0.6);
+        }
+
+        .lamp-ray {
+            width: 0;
+            height: 0;
+            border-left: 120px solid transparent;
+            border-right: 120px solid transparent;
+            border-bottom: 140px solid rgba(241, 196, 15, 0.12);
+            filter: blur(10px);
+            margin-top: -2px;
+        }
+
+        /* Logo / Header Text */
+        .header {
+            text-align: center;
+            margin-top: -30px;
+            margin-bottom: 25px;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .header p {
+            font-size: 11px;
+            color: #8a929e;
+            letter-spacing: 4px;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Main Container Card */
+        .card {
+            background-color: #161a23;
+            border: 1px solid #242b35;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .card h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-desc {
+            color: #8a929e;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+
+        /* Inputs & Form styling */
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group input {
+            width: 100%;
+            background-color: #0f1319;
+            border: 1px solid #2d3748;
+            border-radius: 8px;
+            padding: 14px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Button Styling */
+        .btn {
+            width: 100%;
+            background-color: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #059669;
+        }
+
+        /* Step 2: Payment Details (Hidden initially) */
+        #step-2 {
+            display: none;
+        }
+
+        /* Pricing Boxes Styling */
+        .price-box {
+            border: 2px dashed #242b35;
+            border-radius: 10px;
+            padding: 18px 15px;
+            background-color: rgba(255, 255, 255, 0.01);
+            margin-bottom: 18px;
+            transition: 0.3s;
+        }
+
+        .price-box.active {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.03);
+        }
+
+        .box-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .price-tag {
+            color: #10b981;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .course-topics {
+            list-style: none;
+            margin: 8px 0 0 0;
+            padding-left: 5px;
+            text-align: left;
+        }
+
+        .course-topics li {
+            font-size: 13px;
+            color: #a0aec0;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .course-topics li::before {
+            content: "•";
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .transfer-text {
+            font-size: 13px;
+            color: #a0aec0;
+            margin: 12px 0 6px 0;
+            text-align: center;
+        }
+
+        .number-box {
+            background-color: #0f1319;
+            padding: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-radius: 6px;
+            color: #63b3ed;
+            text-align: center;
+            width: 100%;
+        }
+
+        .urdu-instruction {
+            font-size: 13px;
+            color: #a0aec0;
+            text-align: center;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hanging Lamp Animation Section -->
+    <div class="lamp-container">
+        <div class="lamp-line"></div>
+        <div class="lamp-head"></div>
+        <div class="lamp-ray"></div>
+    </div>
+
+    <!-- Header / Branding -->
+    <div class="header">
+        <h1>FA TRADERS</h1>
+        <p>Global Financial Solutions</p>
+    </div>
+
+    <!-- STEP 1: LOGIN/SIGNUP CARD -->
+    <div class="card" id="step-1">
+        <h2>Sign Up / Log In</h2>
+        <p class="card-desc">Enter your basic details to unlock the exclusive FA Traders guide</p>
+        
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+            <input type="tel" id="phone" placeholder="Phone Number (e.g., 03371234567)" required>
+        </div>
+        
+        <button class="btn" onclick="goToStep2()">Continue to Course</button>
+    </div>
+
+    <!-- STEP 2: MULTIPLE PAYMENT OPTIONS CARD -->
+    <div class="card" id="step-2">
+        <h2>📊 Choose Your Plan</h2>
+        <p class="card-desc">Select a package below and transfer the amount to get instant access.</p>
+        
+        <!-- OPTION 1: 2,000 PKR BOX -->
+        <div class="price-box active">
+            <div class="box-title">📚 Trading Strategy E-Book Only</div>
+            <div class="price-tag">Price: 2,000 PKR</div>
+            <div class="number-box">Easypaisa / Jazzcash: 0337 3353701</div>
+        </div>
+
+        <!-- OPTION 2: 3,000 PKR BOX (NEW VIDEO BOX) -->
+        <div class="price-box active" style="border-color: #3182ce; background-color: rgba(49, 130, 206, 0.03);">
+            <div class="box-title" style="color: #3182ce;">🎥 E-Book + Video Course Package</div>
+            <div class="price-tag" style="color: #3182ce;">Price: 3,000 PKR</div>
+            
+            <ul class="course-topics">
+                <li>Smart Money Concepts (SMC)</li>
+                <li>Inner Circle Trader (ICT) Strategies</li>
+                <li>Advanced Price Action</li>
+                <li>Professional Risk Management</li>
+            </ul>
+            <div class="number-box" style="margin-top: 10px;">Easypaisa / Jazzcash: 0337 3353701</div>
+        </div>
+
+        <p class="urdu-instruction">
+            Apna pasandida plan chunein aur upar diye gaye number par payment transfer karne ke baad niche confirm button dabaen taake WhatsApp par aapko course mil sake.
+        </p>
+        
+        <button class="btn" onclick="openWhatsApp()">Confirm Payment (Open WhatsApp)</button>
+    </div>
+
+    <script>
+        function goToStep2() {
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+
+            if(email === "" || phone === "") {
+                alert("Kindly fill both fields first!");
+                return;
+            }
+            
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+        }
+
+        function openWhatsApp() {
+            var whatsappNumber = "923373353701"; 
+            var message = "Hello! Maine payment transfer kar di hai, kindly mujhe mera trading course aur e-book send kar dein.";
+            
+            var url = "https://wa.me" + whatsappNumber + "?text=" + encodeURIComponent(message);
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>
